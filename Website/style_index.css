@@ -1,0 +1,239 @@
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fbf8f2;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.header-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin: 1rem 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #4caf50;
+    color: white;
+    font-size: 1rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #388e3c;
+}
+/* Homepage Section Styling */
+.homepage-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f5f5f5;
+}
+
+.homepage-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    background-color: #fcf8e2;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+.homepage-content {
+    flex: 1;
+    text-align: left;
+    padding: 1rem;
+}
+
+.homepage-content h1 {
+    font-size: 2rem;
+    color: #45b5b1;
+    margin-bottom: 1rem;
+}
+
+.homepage-content p {
+    font-size: 1rem;
+    color: #45b5b1;
+    margin-bottom: 1.5rem;
+}
+
+.homepage-button {
+    display: inline-block;
+    background-color: #45b5b1;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.homepage-button:hover {
+    background-color: #37908d;
+}
+
+.homepage-image {
+    flex: 1;
+    text-align: right;
+}
+
+.homepage-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* FOMO Section */
+.fomo-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 2rem 0;
+    color: #45b5b1;
+}
+
+/* Products Section */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.product-card .content {
+    padding: 1rem;
+}
+
+.product-card h3 {
+    font-size: 1.2rem;
+    color: #45b5b1;
+    margin-bottom: 0.5rem;
+}
+
+.product-card p {
+    font-size: 0.9rem;
+    color: #6b6b6b;
+    margin-bottom: 0.5rem;
+}
+
+.product-card .price {
+    color: #ff87e7;
+    font-weight: bold;
+}
+
+.product-card small {
+    color: #8c8c8c;
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+}
+ .category-section {
+        padding: 20px;
+        background-color: #faf7f0;
+    }
+
+    .category-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .category-item {
+        text-align: center; 
+        margin: 15px;
+        width: 150px; 
+    }
+    
+    .category-item img {
+        width: 150px; 
+        height: 150px; 
+        object-fit: cover;
+        border-radius: 50%; 
+    }
+    
+    .category-item h2 {
+        font-size: 1.2em;
+        margin-top: 10px; 
+        color: #45b5b1;
+        text-align: center; 
+    }
+
+    .category-item a {
+        text-decoration: none; 
+        color: inherit; 
+    }

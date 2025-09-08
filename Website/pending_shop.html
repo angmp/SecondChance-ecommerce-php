@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Shop Account</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 20%;
+            background-color: #75c7c0;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar a:hover {
+            background-color: #66b0a7;
+        }
+        .content {
+            width: 80%;
+            background-color: #f7f7e8;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f0f0e0;
+        }
+        .btn {
+            padding: 5px 10px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-approve {
+            background-color: #4caf50;
+        }
+        .btn-reject {
+            background-color: #f44336;
+        }
+        .btn-approve:hover {
+            background-color: #45a049;
+        }
+        .btn-reject:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <a href="#">&#8635; Home</a>
+            <a href="#">Control Register</a>
+            <a href="#">CRUD Users</a>
+            <a href="#">Post Announcement</a>
+            <a href="#">Manage Marketplace</a>
+            <a href="#">&#128682; Log-out</a>
+        </div>
+        <div class="content">
+            <h1>Pending Shop Account</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>catherina.vallencia@gmail.com</td>
+                        <td>Catherina</td>
+                        <td>Valencia</td>
+                        <td>Jalan Cendana Cove 10, 10</td>
+                        <td class="status">Pending</td>
+                        <td>
+                            <button class="btn btn-approve" onclick="updateStatus(this, 'Approval')">Approve</button>
+                            <button class="btn btn-reject" onclick="updateStatus(this, 'Rejected')">Reject</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>yosuatanzil100@gmail.com</td>
+                        <td>Yosua</td>
+                        <td>Tanzil</td>
+                        <td>Jalan Cendana Cove 2, 2</td>
+                        <td class="status">Pending</td>
+                        <td>
+                            <button class="btn btn-approve" onclick="updateStatus(this, 'Approval')">Approve</button>
+                            <button class="btn btn-reject" onclick="updateStatus(this, 'Rejected')">Reject</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function updateStatus(button, newStatus) {
+            const row = button.closest('tr'); 
+            const statusCell = row.querySelector('.status');
+            
+            statusCell.textContent = newStatus;
+
+
+            const buttons = row.querySelectorAll('button');
+            buttons.forEach(btn => btn.disabled = true);
+        }
+    </script>
+</body>
+</html>

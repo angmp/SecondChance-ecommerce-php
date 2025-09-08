@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+        .radio-group label {
+            font-weight: normal;
+        }
+        .back-button {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="goBack()">← Kembali</button>
+    <h1>Edit User Information</h1>
+    <form id="editUserForm">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName">
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName">
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender">
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" name="phoneNumber">
+
+        <label for="streetName">Street Name</label>
+        <input type="text" id="streetName" name="streetName">
+
+        <label for="houseNumber">House Number</label>
+        <select id="houseNumber" name="houseNumber">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <!-- Tambahkan opsi lain sesuai kebutuhan -->
+        </select>
+
+        <label>Status Ownership</label>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="ownershipStatus" value="Owner"> Owner
+            </label>
+            <label>
+                <input type="radio" name="ownershipStatus" value="Renter"> Renter
+            </label>
+        </div>
+
+        <label for="bankAccountNumber">Bank Account Number</label>
+        <input type="text" id="bankAccountNumber" name="bankAccountNumber">
+
+        <button type="submit">Update User</button>
+    </form>
+
+    <script>
+        // Fungsi untuk kembali ke halaman sebelumnya
+        function goBack() {
+            window.location.href = 'manage_shop.html';
+        }
+
+        // Fungsi untuk mendapatkan parameter dari URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Fungsi untuk memuat data pengguna
+        function loadUserData(email) {
+            // Simulasi data pengguna (seharusnya ini dari database/API)
+            const users = {
+                "cynthia.yaputera@gmail.com": {
+                    firstName: "Cynthia",
+                    lastName: "Yaputera",
+                    gender: "Perempuan",
+                    phoneNumber: "081341885623",
+                    streetName: "Jalan Cendana Cove 1",
+                    houseNumber: "11",
+                    ownershipStatus: "Owner",
+                    bankAccountNumber: "12345678910"
+                },
+                "catherina.vallencia@gmail.com": {
+                    firstName: "Catherina",
+                    lastName: "Valencia",
+                    gender: "Perempuan",
+                    phoneNumber: "08124206129",
+                    streetName: "Jalan Cendana Cove 10",
+                    houseNumber: "10",
+                    ownershipStatus: "Renter",
+                    bankAccountNumber: "10987654321"
+                }
+                // Tambahkan data pengguna lainnya
+            };
+
+            return users[email];
+        }
+
+        // Ambil email dari URL
+        const email = getQueryParam('email');
+        const userData = loadUserData(email);
+
+        if (userData) {
+            // Isi form dengan data pengguna
+            document.getElementById('firstName').value = userData.firstName;
+            document.getElementById('lastName').value = userData.lastName;
+            document.getElementById('gender').value = userData.gender;
+            document.getElementById('phoneNumber').value = userData.phoneNumber;
+            document.getElementById('streetName').value = userData.streetName;
+            document.getElementById('houseNumber').value = userData.houseNumber;
+            document.querySelector(input[name="ownershipStatus"][value="${userData.ownershipStatus}"]).checked = true;
+            document.getElementById('bankAccountNumber').value = userData.bankAccountNumber;
+        } else {
+            alert('User not found!');
+        }
+    </script>
+</body>
+</html>

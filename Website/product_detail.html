@@ -1,0 +1,289 @@
+<style>
+    .product-detail { background-color: #fff; display: flex; flex-direction: column; }
+    .hero-image { aspect-ratio: 17.24; object-fit: contain; width: 100%; }
+    @media (max-width: 991px) { .hero-image { max-width: 100%; } }
+    .header { background-color: #fff; display: flex; height: 83px; width: 100%; flex-direction: column; }
+    @media (max-width: 991px) { .header { max-width: 100%; } }
+    .header-content { justify-content: space-between; align-items: center; border-bottom: 1px solid #dddbdc; display: flex; width: 100%; padding: 0 68px; }
+    @media (max-width: 991px) { .header-content { max-width: 100%; padding: 0 20px; } }
+    .logo { aspect-ratio: 3; object-fit: contain; width: 120px; align-self: stretch; margin: auto 0; }
+    .nav-menu { display: flex; width: 100%; align-items: center; color: #45b4b1; text-align: center; letter-spacing: 0.2px; justify-content: center; flex-wrap: wrap; font: 900 12px/1 Nunito, sans-serif; }
+    @media (max-width: 991px) { .nav-menu { max-width: 100%; } }
+    .nav-item { font-style: italic; align-self: stretch; white-space: nowrap; margin: auto 0; padding: 20px 12px; }
+    @media (max-width: 991px) { .nav-item { white-space: initial; } }
+    .nav-item-active { font-style: italic; align-self: stretch; color: #ef7fbf; white-space: nowrap; margin: auto 0; padding: 20px 12px; }
+    @media (max-width: 991px) { .nav-item-active { white-space: initial; } }
+    .nav-spacer { align-self: stretch; display: flex; min-height: 56px; margin: auto 0; padding: 20px 0; }
+    .main-content { display: flex; width: 100%; align-items: start; gap: 24px; justify-content: start; flex-wrap: wrap; padding: 30px 80px; }
+    @media (max-width: 991px) { .main-content { max-width: 100%; padding: 0 20px; } }
+    .product-images { display: flex; min-width: 240px; flex-direction: column; justify-content: start; flex: 1; flex-basis: 0%; }
+    @media (max-width: 991px) { .product-images { max-width: 100%; } }
+    .image-row { display: flex; width: 100%; align-items: start; gap: 8px; justify-content: start; flex-wrap: wrap; }
+    @media (max-width: 991px) { .image-row { max-width: 100%; } }
+    .product-image { aspect-ratio: 1.08; object-fit: contain; width: 323px; min-width: 240px; flex-grow: 1; }
+    .product-image-wide { aspect-ratio: 1.12; object-fit: contain; width: 340px; min-width: 240px; flex-grow: 1; }
+    @media (max-width: 991px) { .product-image-wide { max-width: 100%; } }
+    .product-details { display: flex; min-width: 240px; flex-direction: column; justify-content: start; width: 384px; }
+    .product-header { padding-bottom: 16px; border-bottom: 1px solid #acd0cf; display: flex; width: 100%; flex-direction: column; font-family: Nunito, sans-serif; font-weight: 900; justify-content: start; }
+    .product-category { color: #737373; font-size: 12px; font-style: italic; line-height: 1; letter-spacing: 0.2px; }
+    .product-title-price { display: flex; margin-top: 4px; width: 100%; align-items: start; gap: 10px; justify-content: start; }
+    .product-title { color: #000; font-size: 24px; font-style: italic; line-height: 33px; flex: 1; flex-basis: 0%; }
+    .price-container { display: flex; align-items: center; gap: 4px; white-space: nowrap; justify-content: end; width: 188px; }
+    @media (max-width: 991px) { .price-container { white-space: initial; } }
+    .original-price { color: #737373; text-align: right; font-size: 10px; font-style: italic; line-height: 33px; text-decoration-line: line-through; align-self: stretch; width: 58px; margin: auto 0; }
+    .discounted-price { color: #d0021b; font-size: 24px; font-style: italic; line-height: 1; align-self: stretch; margin: auto 0; }
+    .color-selection { display: flex; width: 100%; flex-direction: column; justify-content: start; padding: 18px 0; }
+    .color-label { width: 100%; gap: 12px; color: #000; letter-spacing: 0.2px; font: italic 900 12px/1 Nunito, sans-serif; }
+    .color-options { display: flex; margin-top: 10px; width: 100%; align-items: start; gap: 12px; justify-content: start; }
+    .color-option { display: flex; width: 32px; flex-direction: column; }
+    .color-circle { border-radius: 50%; display: flex; height: 32px; }
+    .size-selection { display: flex; width: 100%; flex-direction: column; letter-spacing: 0.2px; justify-content: start; padding: 18px 0; font: 900 12px/1 Nunito, sans-serif; }
+    .size-header { display: flex; width: 100%; align-items: start; gap: 40px 100px; justify-content: space-between; }
+    .size-label { color: #000; font-style: italic; }
+    .size-guide { color: #262626; font-style: italic; text-decoration: underline; }
+    .size-options { display: flex; margin-top: 10px; width: 100%; align-items: start; gap: 12px; color: #262626; white-space: nowrap; justify-content: start; }
+    @media (max-width: 991px) { .size-options { white-space: initial; } }
+    .size-button { font-style: italic; align-self: stretch; border: 1px solid #000; background-color: #45b4b1; width: 45px; gap: 10px; padding: 12px; }
+    @media (max-width: 991px) { .size-button { white-space: initial; } }
+    .add-to-bag { display: flex; width: 100%; flex-direction: column; color: #fff; text-align: center; letter-spacing: 1.4px; justify-content: center; padding: 32px 0; font: 900 14px/1.2 Nunito, sans-serif; }
+    .add-to-bag-button { font-style: italic; align-self: stretch; background-color: #45b4b1; width: 100%; gap: 10px; padding: 12px 0; }
+    .product-description { border-top: 1px solid #dddbdc; display: flex; width: 100%; flex-direction: column; font-family: Nunito, sans-serif; color: #000; font-weight: 900; justify-content: start; padding: 40px 0 12px; }
+    .description-title { font-size: 16px; font-style: italic; letter-spacing: 0.2px; }
+    .description-text { font-size: 14px; font-style: italic; line-height: 17px; letter-spacing: 1.4px; margin-top: 16px; }
+    .product-fit { align-items: start; border-bottom: 1px solid #dddbdc; display: flex; width: 100%; font-family: Nunito, sans-serif; color: #000; font-weight: 900; justify-content: start; padding: 20px 0; }
+    .fit-label { font-size: 16px; font-style: italic; letter-spacing: 0.2px; width: 106px; }
+    .fit-description { font-size: 14px; font-style: italic; line-height: 1.2; letter-spacing: 1.4px; flex: 1; flex-basis: 0%; }
+    .sustainability { border-bottom: 1px solid #dddbdc; display: flex; width: 100%; flex-direction: column; color: #000; white-space: nowrap; letter-spacing: 0.2px; justify-content: start; padding: 20px 0; font: 900 16px Nunito, sans-serif; }
+    @media (max-width: 991px) { .sustainability { white-space: initial; } }
+    .sustainability-label { font-style: italic; }
+    .sustainability-image { aspect-ratio: 6.1; object-fit: contain; width: 384px; }
+    .recommended-section { display: flex; width: 100%; flex-direction: column; font-family: Nunito, sans-serif; font-weight: 900; letter-spacing: 0.2px; justify-content: start; padding: 64px 196px; }
+    @media (max-width: 991px) { .recommended-section { max-width: 100%; padding: 0 20px; } }
+    .recommended-title { color: #45b4b1; font-size: 16px; }
+    @media (max-width: 991px) { .recommended-title { max-width: 100%; } }
+    .recommended-products { display: flex; margin-top: 8px; width: 100%; align-items: start; gap: 24px; font-size: 12px; justify-content: start; flex-wrap: wrap; }
+    @media (max-width: 991px) { .recommended-products { max-width: 100%; } }
+    .product-card { display: flex; flex-direction: column; justify-content: start; flex: 1; flex-basis: 0%; }
+    .product-card-image { aspect-ratio: 0.6; object-fit: contain; width: 100%; }
+    .product-card-details { display: flex; margin-top: 10px; width: 100%; flex-direction: column; justify-content: start; }
+    .product-card-info { display: flex; width: 100%; align-items: start; gap: 12px; justify-content: start; padding: 8px 0; }
+    .product-card-title { color: #262626; font-style: italic; line-height: 16px; flex: 1; flex-basis: 0%; }
+    .product-card-price { display: flex; align-items: center; gap: 4px; white-space: nowrap; text-align: right; line-height: 1; justify-content: end; }
+    @media (max-width: 991px) { .product-card-price { white-space: initial; } }
+    .product-card-original-price { color: #737373; font-style: italic; text-decoration: line-through; align-self: stretch; margin: auto 0; }
+    .product-card-discounted-price { color: #262626; font-style: italic; align-self: stretch; margin: auto 0; }
+    .footer { background-color: #fbffe9; display: flex; width: 100%; flex-direction: column; justify-content: start; padding: 40px 72px 0; }
+    @media (max-width: 991px) { .footer { max-width: 100%; padding: 0 20px; } }
+    .footer-content { display: flex; width: 100%; align-items: start; justify-content: start; flex-wrap: wrap; }
+    @media (max-width: 991px) { .footer-content { max-width: 100%; } }
+    .footer-column { display: flex; flex-direction: column; font-family: Nunito, sans-serif; font-weight: 900; justify-content: start; flex: 1; flex-basis: 0%; padding: 20px; }
+    .footer-heading { color: #45b4b1; font-size: 16px; letter-spacing: 0.2px; }
+    .footer-links { display: flex; margin-top: 20px; width: 100%; flex-direction: column; font-size: 14px; color: #737373; letter-spacing: 1.4px; line-height: 1.2; justify-content: start; }
+    .footer-link { font-style: italic; margin-top: 10px; }
+    .footer-form { display: flex; min-width: 240px; align-items: start; justify-content: start; padding: 20px; }
+    @media (max-width: 991px) { .footer-form { max-width: 100%; } }
+    .footer-input { align-self: stretch; border: 1px solid #fbffe9; background-color: #fff; min-width: 240px; gap: 10px; color: #737373; letter-spacing: 1.4px; width: 388px; padding: 18px 15px; font: italic 900 14px/1.2 Nunito, -apple-system, Roboto, Helvetica, sans-serif; }
+    .footer-button { background-color: #45b4b1; display: flex; align-items: center; gap: 10px; overflow: hidden; justify-content: start; width: 52px; height: 53px; padding: 15px 14px; border: 1px solid #45b4b1; }
+    .footer-button-icon { aspect-ratio: 1; object-fit: contain; width: 24px; }
+    .footer-bottom { display: flex; width: 100%; flex-direction: column; color: #737373; text-align: center; letter-spacing: 0.2px; justify-content: start; padding: 16px 0; font: 900 12px/1 Nunito, sans-serif; }
+    @media (max-width: 991px) { .footer-bottom { max-width: 100%; } }
+    .footer-links-bottom { display: flex; width: 100%; align-items: start; gap: 24px; justify-content: center; flex-wrap: wrap; }
+    @media (max-width: 991px) { .footer-links-bottom { max-width: 100%; } }
+    .footer-link-bottom { font-style: italic; }
+    .footer-copyright { font-style: italic; margin-top: 16px; }
+    @media (max-width: 991px) { .footer-copyright { max-width: 100%; } }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    </style>
+    
+    <section class="product-detail">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c82777384b10d5d8a551fb35b32282d7806dd20843f05711f26a44bdd9ffe8f9?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Hero image" class="hero-image" loading="lazy">
+    <header class="header">
+      <div class="header-content">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d67d93ed4f5465b6aae470852ceb878b74f8e5c7d7b28ccbe2a13b3b0b7dc6c9?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Logo" class="logo" loading="lazy">
+        <nav class="nav-menu">
+          <a href="#" class="nav-item">Promo</a>
+          <a href="#" class="nav-item">New Arrivals</a>
+          <a href="#" class="nav-item-active">Shirts</a>
+          <a href="#" class="nav-item">Sweaters&Hoodies</a>
+          <a href="#" class="nav-item">Pants & Jeans</a>
+          <a href="#" class="nav-item">Accessories</a>
+          <a href="#" class="nav-item">Footwear</a>
+          <span class="nav-spacer"></span>
+          <span class="nav-spacer"></span>
+        </nav>
+      </div>
+    </header>
+    <main class="main-content">
+      <section class="product-images">
+        <div class="image-row">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8cd8cbd66dda808317e6eb8a048cab9656a87c172eef87557e434ef89cfbc506?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Product view 1" class="product-image" loading="lazy">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/03294341ee8f2461240ffe8e1c30cd8a6fea227b5d5491feffd1574616da81dd?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Product view 2" class="product-image-wide" loading="lazy">
+        </div>
+        <div class="image-row">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/50173365bf32e15c956795b6c4f820c3640277e588f2b3aaf8bd58f802ef1373?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Product view 3" class="product-image" loading="lazy">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3b276ef3d6dfee1147c7d07b9f262e7f49d086f7257d2e0c4a1a2d6bcf122f72?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Product view 4" class="product-image-wide" loading="lazy">
+        </div>
+        <div class="image-row">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3db8bc7c4fc158199ff148c151023b24a1556d9d657d69424de89a46ae987acb?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Product view 5" class="product-image" loading="lazy">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9c4c1983abbf7a3b4a72be570a9841fd7b20befd32d51ab103bc0371786b4b12?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Product view 6" class="product-image-wide" loading="lazy">
+        </div>
+      </section>
+      <section class="product-details">
+        <div class="product-header">
+          <p class="product-category">Men / Outerwear - Jackets & Coats</p>
+          <div class="product-title-price">
+            <h1 class="product-title">Nike Women's Yellow & Blue Jersey</h1>
+            <div class="price-container">
+              <span class="original-price">Rp200.0000</span>
+              <span class="discounted-price">Rp150.000</span>
+            </div>
+          </div>
+        </div>
+        <div class="color-selection">
+          <p class="color-label">Blue & Yellow</p>
+          <div class="color-options">
+            <div class="color-option">
+              <div class="color-circle" style="background-color: blue;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="size-selection">
+          <div class="size-header">
+            <span class="size-label">Size</span>
+            <a href="#" class="size-guide">Size Guide</a>
+          </div>
+          <div class="size-options">
+            <button class="size-button">S</button>
+          </div>
+        </div>
+        <div class="add-to-bag">
+          <button class="add-to-bag-button">ADD TO BAG</button>
+        </div>
+        <div class="product-description">
+          <h2 class="description-title">Part shirt, part jacket, all style.</h2>
+          <p class="description-text">Jersey vintage Boca Juniors<br>Kondisi sangat baik<br>Harga 150k✨<br>Lokasi Tangerang</p>
+        </div>
+        <div class="product-fit">
+          <span class="fit-label">Fit</span>
+          <span class="fit-description">Size S (56x45)</span>
+        </div>
+        <div class="sustainability">
+          <span class="sustainability-label">Sustainability</span>
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2f2f7cba7fb769854cd7c11178aae6b0433aa5c815cea54b64cbaa99439d0fc8?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Sustainability icon" class="sustainability-image" loading="lazy">
+        </div>
+      </section>
+    </main>
+    <section class="recommended-section">
+      <h2 class="recommended-title">Recommended Products</h2>
+      <div class="recommended-products">
+        <article class="product-card">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/fcb3306682323497af6aaf3b80da5fa599927713c879aa354f0f1d2cb0f67d28?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Nike Cactus Sweater" class="product-card-image" loading="lazy">
+          <div class="product-card-details">
+            <div class="product-card-info">
+              <h3 class="product-card-title">Nike Cactus Sweater</h3>
+              <div class="product-card-price">
+                <span class="product-card-original-price">Rp.200.000</span>
+                <span class="product-card-discounted-price">Rp.100.000</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8600047032e95b3955ae991e7dda6dbf90e3bfe989ebe24e1e5e826b88df39dc?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Nike Gray Sweater" class="product-card-image" loading="lazy">
+          <div class="product-card-details">
+            <div class="product-card-info">
+              <h3 class="product-card-title">Nike Gray Sweater</h3>
+              <div class="product-card-price">
+                <span class="product-card-original-price">Rp.300.000</span>
+                <span class="product-card-discounted-price">Rp.200.000</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7c206f33fae9db3c6368da33206219419ff0a491bdac2928bc47e07a1f6d521f?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Rated R Sweater" class="product-card-image" loading="lazy">
+          <div class="product-card-details">
+            <div class="product-card-info">
+              <h3 class="product-card-title">Rated R Sweater</h3>
+              <div class="product-card-price">
+                <span class="product-card-discounted-price">Rp.120.000</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/af5ff0d38da462f0f14773c16514c8d57dfd06c8ff7b67100f9852753bbac604?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="The Waffle Long-Sleeve Crew" class="product-card-image" loading="lazy">
+          <div class="product-card-details">
+            <div class="product-card-info">
+              <h3 class="product-card-title">The Waffle Long-Sleeve Crew</h3>
+              <div class="product-card-price">
+                <span class="product-card-discounted-price">Rp.100.000</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3 class="footer-heading">Account</h3>
+          <nav class="footer-links">
+            <a href="#" class="footer-link">Log In</a>
+            <a href="#" class="footer-link">Sign Up</a>
+            <a href="#" class="footer-link">Redeem a Gift Card</a>
+          </nav>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Company</h3>
+          <nav class="footer-links">
+            <a href="#" class="footer-link">About</a>
+            <a href="#" class="footer-link">Environmental Initiatives</a>
+            <a href="#" class="footer-link">Factories</a>
+            <a href="#" class="footer-link">DEI</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">International</a>
+            <a href="#" class="footer-link">Accessibility</a>
+          </nav>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Get Help</h3>
+          <nav class="footer-links">
+            <a href="#" class="footer-link">Help Center</a>
+            <a href="#" class="footer-link">Return Policy</a>
+            <a href="#" class="footer-link">Shipping Info</a>
+            <a href="#" class="footer-link">Bulk Orders</a>
+          </nav>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-heading">Connect</h3>
+          <nav class="footer-links">
+            <a href="#" class="footer-link">Facebook</a>
+            <a href="#" class="footer-link">Instagram</a>
+            <a href="#" class="footer-link">Twitter</a>
+            <a href="#" class="footer-link">Affiliates</a>
+            <a href="#" class="footer-link">Our Stores</a>
+          </nav>
+        </div>
+        <form class="footer-form">
+          <label for="email-input" class="visually-hidden">Email Address</label>
+          <input type="email" id="email-input" placeholder="Email Address" class="footer-input" aria-label="Email Address">
+          <button type="submit" class="footer-button" aria-label="Subscribe">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e22bb61fef9a924d7774f2e51f6a7b21163baa74c691c36e4c8f1b4e3db0331?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="" class="footer-button-icon" aria-hidden="true">
+          </button>
+        </form>
+      </div>
+      <div class="footer-bottom">
+        <nav class="footer-links-bottom">
+          <a href="#" class="footer-link-bottom">Privacy Policy</a>
+          <a href="#" class="footer-link-bottom">Terms of Service</a>
+          <a href="#" class="footer-link-bottom">Do Not Sell or Share My Personal Information</a>
+          <a href="#" class="footer-link-bottom">CS Supply Chain Transparency</a>
+          <a href="#" class="footer-link-bottom">Vendor Code of Conduct</a>
+          <a href="#" class="footer-link-bottom">Sitemap Pages</a>
+          <a href="#" class="footer-link-bottom">Sitemap Products</a>
+        </nav>
+        <p class="footer-copyright">© 2023 All Rights Reserved</p>
+      </div>
+    </footer>
+    </section>
