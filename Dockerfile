@@ -1,13 +1,9 @@
 FROM php:8.1-apache
-
-# Copy semua file ke dalam container
 COPY . /var/www/html/
-
-# Install ekstensi PHP
+WORKDIR /var/www/html
 RUN docker-php-ext-install mysqli pdo pdo_mysql
-
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
 EXPOSE 80
 CMD ["apache2-foreground"]
 
-# Jalankan Apache
-CMD ["apache2-foreground"]
