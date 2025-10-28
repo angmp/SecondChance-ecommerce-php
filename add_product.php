@@ -17,19 +17,21 @@ if (!isset($_SESSION['shopId'])) {
 $userId = $_SESSION['userId']; 
 $shopId = $_SESSION['shopId']; 
 
-// Connect to the database
-$host = 'localhost';
-$dbname = 'sc_db';
-$username = 'root';
-$password = '';
+// ✅ Koneksi ke database lewat db_connect.php
+require_once 'db_connect.php';  // pastikan path-nya benar
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Error connecting to database: " . $e->getMessage());
+// Pastikan koneksi tersedia ($conn dari db_connect.php)
+if (!$conn) {
+    die("Database connection failed.");
 }
 
+// Kalau kamu pakai mysqli di db_connect.php:
+$pdo = new PDO(
+    "mysql:host=" . getenv("MYSQLHOST") . ";dbname=" . getenv("MYSQLDATABASE"),
+    getenv("MYSQLUSER"),
+    getenv("MYSQLPASSWORD")
+);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['productPhoto'])) {
         // Debugging: Check if file data is correctly received
@@ -319,4 +321,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </script>
 </body>
+
 </html>
