@@ -1,0 +1,342 @@
+<style>
+    .home { background-color: #fff; display: flex; flex-direction: column; }
+    .hero-image { aspect-ratio: 13.51; object-fit: contain; width: 100%; }
+    @media (max-width: 991px) { .hero-image { max-width: 100%; } }
+    .header { background-color: #fff; display: flex; height: 83px; width: 100%; flex-direction: column; }
+    @media (max-width: 991px) { .header { max-width: 100%; } }
+    .header-content { justify-content: space-between; align-items: center; border-bottom: 1px solid #dddbdc; display: flex; width: 100%; padding: 0 68px; }
+    @media (max-width: 991px) { .header-content { max-width: 100%; padding: 0 20px; } }
+    .logo { aspect-ratio: 3; object-fit: contain; width: 120px; align-self: stretch; margin: auto 0; }
+    .nav-menu { display: flex; width: 100%; align-items: center; color: #45b4b1; text-align: center; letter-spacing: 0.2px; justify-content: center; flex-wrap: wrap; font: 900 12px/1 Nunito, sans-serif; }
+    @media (max-width: 991px) { .nav-menu { max-width: 100%; } }
+    .nav-item { font-style: italic; align-self: stretch; white-space: nowrap; margin: auto 0; padding: 20px 12px; }
+    @media (max-width: 991px) { .nav-item { white-space: initial; } }
+    .nav-item-new { font-style: italic; align-self: stretch; margin: auto 0; padding: 20px 12px; }
+    .nav-item-pants { font-style: italic; align-self: stretch; margin: auto 0; padding: 20px 12px; }
+    .nav-spacer { align-self: stretch; display: flex; min-height: 56px; margin: auto 0; padding: 20px 0; }
+    .header-bottom { align-self: start; display: flex; min-height: 40px; gap: 10px; padding: 12px 0; }
+    .hero-section { background-color: rgba(233, 255, 147, 0.2); display: flex; width: 100%; flex-direction: column; overflow: hidden; align-items: start; font-family: Nunito, sans-serif; font-weight: 900; text-align: center; justify-content: center; padding: 275px 632px 275px 32px; }
+    @media (max-width: 991px) { .hero-section { max-width: 100%; padding: 100px 20px; } }
+    .hero-content { display: flex; width: 632px; max-width: 100%; flex-direction: column; align-items: center; }
+    .hero-logo { aspect-ratio: 2.53; object-fit: contain; width: 324px; max-width: 100%; }
+    .hero-tagline { font-style: italic; align-self: stretch; margin-top: 30px; width: 100%; font-size: 24px; color: #45b4b1; line-height: 1; }
+    @media (max-width: 991px) { .hero-tagline { max-width: 100%; } }
+    .cta-button { font-style: italic; align-self: stretch; background-color: #45b4b1; margin-top: 30px; width: 240px; max-width: 100%; gap: 10px; font-size: 14px; color: #fff; letter-spacing: 1.4px; line-height: 1.2; padding: 12px 0; }
+    .category-section { display: flex; width: 100%; flex-direction: column; font-family: Nunito, sans-serif; font-weight: 900; text-align: center; padding: 90px 42px; }
+    @media (max-width: 991px) { .category-section { max-width: 100%; padding: 0 20px; } }
+    .category-title { color: #45b4b1; font-size: 24px; font-style: italic; line-height: 1; }
+    @media (max-width: 991px) { .category-title { max-width: 100%; } }
+    .category-grid { display: flex; margin-top: 25px; width: 100%; align-items: start; gap: 8px; font-size: 14px; color: #000; letter-spacing: 1.4px; line-height: 1; justify-content: start; flex-wrap: wrap; }
+    @media (max-width: 991px) { .category-grid { max-width: 100%; } }
+    .category-item { display: flex; flex-direction: column; justify-content: start; flex: 1; flex-basis: 0%; }
+    .category-image { aspect-ratio: 0.81; object-fit: contain; width: 213px; }
+    .category-name { font-style: italic; text-decoration: underline; margin-top: 12px; }
+    .promo-section { display: flex; width: 100%; align-items: start; gap: 12px; font-family: Nunito, sans-serif; font-weight: 900; text-align: center; line-height: 1.2; justify-content: start; flex-wrap: wrap; padding: 0 42px; }
+    @media (max-width: 991px) { .promo-section { max-width: 100%; padding: 0 20px; } }
+    .promo-item { display: flex; min-width: 240px; min-height: 534px; flex-direction: column; justify-content: center; flex: 1; flex-basis: 0%; }
+    @media (max-width: 991px) { .promo-item { max-width: 100%; } }
+    .promo-title { color: #fff; font-size: 40px; font-style: italic; letter-spacing: 0.2px; }
+    @media (max-width: 991px) { .promo-title { max-width: 100%; } }
+    .promo-button { font-style: italic; align-self: center; background-color: #fff; margin-top: 23px; width: 240px; max-width: 100%; gap: 10px; font-size: 14px; color: #262626; letter-spacing: 1.4px; padding: 12px 0; }
+    .featured-section { display: flex; width: 100%; flex-direction: column; padding: 90px 0 73px; }
+    @media (max-width: 991px) { .featured-section { max-width: 100%; } }
+    .featured-header { display: flex; width: 100%; flex-direction: column; font-family: Nunito, sans-serif; color: #45b4b1; font-weight: 900; text-align: center; padding: 0 42px; }
+    @media (max-width: 991px) { .featured-header { max-width: 100%; padding: 0 20px; } }
+    .featured-title { font-size: 24px; font-style: italic; line-height: 1; }
+    @media (max-width: 991px) { .featured-title { max-width: 100%; } }
+    .featured-subtitle { font-size: 16px; font-style: italic; letter-spacing: 0.64px; margin-top: 12px; }
+    @media (max-width: 991px) { .featured-subtitle { max-width: 100%; } }
+    .featured-grid { display: flex; margin-top: 30px; width: 100%; align-items: start; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    @media (max-width: 991px) { .featured-grid { max-width: 100%; } }
+    .featured-nav { align-self: stretch; display: flex; align-items: center; gap: 10px; justify-content: center; height: 100%; width: 40px; }
+    @media (max-width: 991px) { .featured-nav { display: none; } }
+    .nav-arrow { aspect-ratio: 1; object-fit: contain; width: 40px; align-self: stretch; margin: auto 0; }
+    .featured-item { display: flex; min-width: 240px; flex-direction: column; letter-spacing: 0.2px; justify-content: start; flex: 1; flex-basis: 0%; font: 900 12px/1 Nunito, sans-serif; }
+    .featured-image { aspect-ratio: 0.67; object-fit: contain; width: 100%; }
+    .featured-details { display: flex; margin-top: 6px; width: 100%; flex-direction: column; }
+    .featured-info { display: flex; width: 100%; align-items: start; gap: 12px; color: #000; justify-content: start; }
+    .featured-name { font-style: italic; flex: 1; flex-basis: 0%; }
+    .featured-price { text-align: right; font-style: italic; }
+    .featured-tag { color: #737373; font-style: italic; }
+    .featured-indicator { display: flex; min-height: 47px; margin-top: 30px; width: 100%; gap: 12px; padding: 20px 0; }
+    @media (max-width: 991px) { .featured-indicator { max-width: 100%; } }
+    .footer { background-color: #fbffe9; display: flex; width: 100%; flex-direction: column; padding: 40px 72px 0; }
+    @media (max-width: 991px) { .footer { max-width: 100%; padding: 0 20px; } }
+    .footer-content { display: flex; width: 100%; align-items: start; justify-content: start; flex-wrap: wrap; }
+    @media (max-width: 991px) { .footer-content { max-width: 100%; } }
+    .footer-column { display: flex; flex-direction: column; font-family: Nunito, sans-serif; font-weight: 900; justify-content: start; flex: 1; flex-basis: 0%; padding: 20px; }
+    .footer-heading { color: #45b4b1; font-size: 16px; letter-spacing: 0.2px; }
+    .footer-links { display: flex; margin-top: 20px; width: 100%; flex-direction: column; font-size: 14px; color: #737373; letter-spacing: 1.4px; line-height: 1.2; }
+    .footer-link { font-style: italic; margin-top: 10px; }
+    .footer-form { display: flex; min-width: 240px; align-items: start; justify-content: start; padding: 20px; }
+    @media (max-width: 991px) { .footer-form { max-width: 100%; } }
+    .footer-input { align-self: stretch; border: 1px solid #fbffe9; background-color: #fff; min-width: 240px; gap: 10px; color: #737373; letter-spacing: 1.4px; width: 388px; padding: 18px 15px; font: italic 900 14px/1.2 Nunito, -apple-system, Roboto, Helvetica, sans-serif; }
+    .footer-button { background-color: #45b4b1; display: flex; align-items: center; gap: 10px; overflow: hidden; justify-content: start; width: 52px; height: 53px; padding: 15px 14px; border: 1px solid #45b4b1; }
+    .footer-button-icon { aspect-ratio: 1; object-fit: contain; width: 24px; }
+    .footer-bottom { display: flex; width: 100%; flex-direction: column; color: #737373; text-align: center; letter-spacing: 0.2px; padding: 16px 0; font: 900 12px/1 Nunito, sans-serif; }
+    @media (max-width: 991px) { .footer-bottom { max-width: 100%; } }
+    .footer-links-bottom { display: flex; width: 100%; align-items: start; gap: 24px; justify-content: center; flex-wrap: wrap; }
+    @media (max-width: 991px) { .footer-links-bottom { max-width: 100%; } }
+    .footer-link-bottom { font-style: italic; }
+    .footer-copyright { font-style: italic; margin-top: 16px; }
+    @media (max-width: 991px) { .footer-copyright { max-width: 100%; } }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    </style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website</title>
+  
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  
+  <!-- Tambahkan file CSS Anda di sini -->
+  <style>
+    /* Contoh CSS dasar */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #377e83;
+      padding: 10px 20px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+    }
+
+    .nav-item {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .nav-item i {
+      margin-right: 5px;
+    }
+
+    .nav-item:hover {
+      color: #f4c542;
+    }
+
+    .cta-button {
+      padding: 10px 20px;
+      color: white;
+      background-color: #f4c542;
+      border: none;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .cta-button:hover {
+      background-color: #e6b739;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-menu">
+      <a href="#" class="nav-item"><i class="fas fa-tags"></i> Promo</a>
+      <a href="#" class="nav-item"><i class="fas fa-star"></i> New Arrivals</a>
+      <a href="#" class="nav-item"><i class="fas fa-tshirt"></i> Shirts</a>
+      <a href="#" class="nav-item"><i class="fas fa-snowflake"></i> Sweaters & Hoodies</a>
+      <a href="#" class="nav-item"><i class="fas fa-user"></i> Accessories</a>
+      <a href="search.php" class="nav-item"><i class="fas fa-search"></i> Search</a>
+      <a href="edit_profile.php" class="nav-item"><i class="fas fa-user-edit"></i> Profile</a>
+      <a href="cart.html" class="nav-item"><i class="fas fa-shopping-cart"></i> Cart</a>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Everything Deserves a Second Chance, Even Clothing.</h1>
+      <a href="#" class="cta-button">SHOP NOW</a>
+    </div>
+  </section>
+    
+      <section class="hero-section">
+        <div class="hero-content">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/161e931860e13225c9b171ea6463d06bc3830d72d134f1216f4aae28f41da40a?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Hero Logo" class="hero-logo" />
+          <h1 class="hero-tagline">Everything deserves a Second Chance, Even Clothing.</h1>
+          <a href="#" class="cta-button">SHOP NOW</a>
+        </div>
+      </section>
+    
+      <section class="category-section">
+        <h2 class="category-title">Shop by Category</h2>
+        <div class="category-grid">
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/97bd342b4160636245eff599753414b06bcbf9ea81eebe2e457aaee60b582ca5?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Shirts Category" class="category-image" />
+            <a href="product_detail.html" class="category-name">SHIRTS</a>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc937d69e77567ad661348f62cd34e04d61d691b391b9368aedc128a89ce699d?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Pants Category" class="category-image" />
+            <a href="#" class="category-name">PANTS</a>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cbbf27fbbaeee393db1be608f2d1ade40127b37283832ecfec01f127e3d646e?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Jersey Category" class="category-image" />
+            <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8385dcd082b2d24d30856bf5ae30079196329aceda0f91a149a51865845794c6?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Sweater Category" class="category-image" />
+            <a href="#" class="category-name">SWEATER</a>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/757650d00b2656d8f9528526c33175a3a9c35d5522ca9c41a2dc0ce1ca7fc6a4?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Outerwear Category" class="category-image" />
+            <a href="#" class="category-name">OUTERWEAR</a>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0d87617ec3dff4ac0866f4455929e5e6e99c040650e8759abbb1f5aeca8acbce?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Accessories Category" class="category-image" />
+            <a href="#" class="category-name">ACCESSORIES</a>
+          </div>
+        </div>
+      </section>
+    
+      <section class="promo-section">
+        <div class="promo-item">
+          <h2 class="promo-title">Vintage Items</h2>
+          <a href="#" class="promo-button">CLICK HERE!</a>
+        </div>
+        <div class="promo-item">
+          <h2 class="promo-title">Pre-Loved</h2>
+          <a href="#" class="promo-button">CLICK HERE!</a>
+        </div>
+        <div class="promo-item">
+          <h2 class="promo-title">10.10 Promo</h2>
+          <a href="#" class="promo-button">CLICK HERE!</a>
+        </div>
+      </section>
+    
+      <section class="featured-section">
+        <div class="featured-header">
+          <h2 class="featured-title">Anti Fomo-Fomo Club!</h2>
+          <p class="featured-subtitle">Specially Picked, Just for you!</p>
+        </div>
+        <div class="featured-grid">
+          <button class="featured-nav" aria-label="Previous item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f9341dd9df623eb5fc5eec0bde4a2b6797e36070cad389e661be57d0d28eb79e?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="" class="nav-arrow" />
+          </button>
+          <div class="featured-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4e956b324c36fd26a931a3d36841a79c437995af376baad2ec233dcc17da6066?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Blue Sweater" class="featured-image" />
+            <div class="featured-details">
+              <div class="featured-info">
+                <span class="featured-name">Blue Sweater</span>
+                <span class="featured-price">Rp.60.000</span>
+              </div>
+              <span class="featured-tag">New Arrival</span>
+            </div>
+          </div>
+          <div class="featured-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2a99164380f4debae969fdf60bc256b9285d3bb6b4931037ce5af1b66c6d7d26?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Jersey Sweater Vintage" class="featured-image" />
+            <div class="featured-details">
+              <div class="featured-info">
+                <span class="featured-name">Jersey Sweater Vintage</span>
+                <span class="featured-price">Rp.200.000</span>
+              </div>
+              <span class="featured-tag">New Arrival</span>
+            </div>
+          </div>
+          <div class="featured-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/74603a574af56ac30111aedcf5e84843357b345016d0cfcf4ea5d1ec7bbc8744?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Teamff Hoodie Vintage" class="featured-image" />
+            <div class="featured-details">
+              <div class="featured-info">
+                <span class="featured-name">Teamff Hoodie Vintage</span>
+                <span class="featured-price">Rp.220.000</span>
+              </div>
+              <span class="featured-tag">New Arrival</span>
+            </div>
+          </div>
+          <div class="featured-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9c29665b18a2fde6df73ae18da4abcbc73915b02ecf96cd76b4d9067ff4157bf?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="Sweater Fancy Vintage" class="featured-image" />
+            <div class="featured-details">
+              <div class="featured-info">
+                <span class="featured-name">Sweater Fancy Vintage</span>
+                <span class="featured-price">Rp.150.000</span>
+              </div>
+              <span class="featured-tag">New Arrival</span>
+            </div>
+          </div>
+          <div class="featured-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4023674a2b74a328716b6ae892b5768bd1580aa7e45445555c911d4726c84e3a?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="The Heavyweight" class="featured-image" />
+            <div class="featured-details">
+              <span class="featured-name">The Heavyweight</span>
+              <span class="featured-tag">New Arrival</span>
+            </div>
+          </div>
+          <button class="featured-nav" aria-label="Next item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c6c1b43225d51cb280a7c47de6ada2d1a371e9eaac4173b02c9a27aed717a07?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="" class="nav-arrow" />
+          </button>
+        </div>
+        <div class="featured-indicator" aria-hidden="true"></div>
+      </section>
+    
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3 class="footer-heading">Account</h3>
+            <nav class="footer-links">
+              <a href="#" class="footer-link">Log In</a>
+              <a href="#" class="footer-link">Sign Up</a>
+              <a href="#" class="footer-link">Redeem a Gift Card</a>
+            </nav>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-heading">Company</h3>
+            <nav class="footer-links">
+              <a href="#" class="footer-link">About</a>
+              <a href="#" class="footer-link">Environmental Initiatives</a>
+              <a href="#" class="footer-link">Factories</a>
+              <a href="#" class="footer-link">DEI</a>
+              <a href="#" class="footer-link">Careers</a>
+              <a href="#" class="footer-link">International</a>
+              <a href="#" class="footer-link">Accessibility</a>
+            </nav>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-heading">Get Help</h3>
+            <nav class="footer-links">
+              <a href="#" class="footer-link">Help Center</a>
+              <a href="#" class="footer-link">Return Policy</a>
+              <a href="#" class="footer-link">Shipping Info</a>
+              <a href="#" class="footer-link">Bulk Orders</a>
+            </nav>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-heading">Connect</h3>
+            <nav class="footer-links">
+              <a href="#" class="footer-link">Facebook</a>
+              <a href="#" class="footer-link">Instagram</a>
+              <a href="#" class="footer-link">Twitter</a>
+              <a href="#" class="footer-link">Affiliates</a>
+              <a href="#" class="footer-link">Our Stores</a>
+            </nav>
+          </div>
+          <form class="footer-form">
+            <label for="email-input" class="visually-hidden">Email Address</label>
+            <input type="email" id="email-input" placeholder="Email Address" class="footer-input" required />
+            <button type="submit" class="footer-button" aria-label="Subscribe">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/073d3e8b403eb9ef749a3e2f57f7a33ad8b3bcda13026188d07f6c6c19dd5398?placeholderIfAbsent=true&apiKey=88c3b7c650644644ba82fd30cce7c888" alt="" class="footer-button-icon" />
+            </button>
+          </form>
+        </div>
+        <div class="footer-bottom">
+          <nav class="footer-links-bottom">
+            <a href="#" class="footer-link-bottom">Privacy Policy</a>
+            <a href="#" class="footer-link-bottom">Terms of Service</a>
+            <a href="#" class="footer-link-bottom">Do Not Sell or Share My Personal Information</a>
+            <a href="#" class="footer-link-bottom">CS Supply Chain Transparency</a>
+            <a href="#" class="footer-link-bottom">Vendor Code of Conduct</a>
+            <a href="#" class="footer-link-bottom">Sitemap Pages</a>
+            <a href="#" class="footer-link-bottom">Sitemap Products</a>
+          </nav>
+          <p class="footer-copyright">© 2023 All Rights Reserved</p>
+        </div>
+      </footer>
+    </main>
